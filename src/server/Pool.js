@@ -8,6 +8,10 @@ export class Pool {
         this.queue = [];
     }
     add(url) {
+        url = url && url.trim();
+        if (!url) {
+            return;
+        }
         this.queue.push(url);
         this.check();
     }
