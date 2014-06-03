@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <% include head.ejs %>
+    <body>
+        <form id="form" method="POST" onsubmit="go(); return false;">
+            <textarea id="textarea" style="width: 99%; height:300px"></textarea>
+            <div>
+                <input type="submit"/>
+            </div>
+        </form>
+        <div id="results">
+
+        </div>
+
+        <script type="text/javascript">
+            window.go = function() {
+                var textarea = document.getElementById('textarea');
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState==4 && xhr.status == 200) {
+                        document.getElementById("results")
+                            .innerHTML = xhr.responseText;
+                        /*.appendChild(
+                            document.createTextNode(xhr.responseText)
+                        );*/
+                    }
+                };
+                xhr.open('POST', '/', true);
+                xhr.send(textarea.value);
+            };
+
+        </script>
+    </body>
+</html>
