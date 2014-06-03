@@ -39,8 +39,11 @@ export class Pool {
             this.processingCount--;
             this.check();
         });
-        req.on('error', function(e) {
+        req.on('error', (e) => {
             console.log('problem with request: ' + e.message);
+            this.doneCallback(item, 0);
+            this.processingCount--;
+            this.check();
         });
         req.end();
     }
