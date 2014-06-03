@@ -4,7 +4,7 @@ var url = require('url');
 export class Pool {
     constructor() {
         this.processingCount = 0;
-        this.max = 5;
+        this.max = 20;
         this.queue = [];
     }
     add(url) {
