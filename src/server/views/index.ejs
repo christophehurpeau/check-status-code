@@ -15,11 +15,12 @@
         <script type="text/javascript">
             window.go = function() {
                 var textarea = document.getElementById('textarea');
+                var results = document.getElementById("results");
+                results.innerHTML = '<i>Processing...</i>';
                 var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState==4 && xhr.status == 200) {
-                        document.getElementById("results")
-                            .innerHTML = xhr.responseText;
+                        results.innerHTML = xhr.responseText;
                         /*.appendChild(
                             document.createTextNode(xhr.responseText)
                         );*/
